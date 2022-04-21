@@ -109,17 +109,13 @@ function createAliens() {
 // Função responsável por mover o inimigo
 function moveAlien(alien) {
     let moveAlienInterval = setInterval(() => {
-        let xPosition = parseInt(window.getComputedStyle(alien).getPropertyValue('left'));
+        // let xPosition = parseInt(window.getComputedStyle(alien).getPropertyValue('left'));
+        let xPosition = parseInt(alien.style.left);
         if (xPosition <= 50) {
             alien.remove();
             clearInterval(moveAlienInterval);
             moveAlienInterval = null;
-            // createAliens();
-            // if (Array.from(alien.classList).includes('dead-alien')) {
-            //     alien.remove();
-            // } else {
-            //     // GameOver();
-            // }
+            gameOver();
         } else {
             alien.style.left = `${xPosition - 4}px`;
         }
